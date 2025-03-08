@@ -1,0 +1,32 @@
+<div style="text-align:center">
+  <h1>{{ title }}</h1> <!-- Esto ahora mostrará la propiedad 'title' que definimos en el componente -->
+
+  <form (ngSubmit)="onSubmit()">
+    <label for="nombre">Escribe tu nombre:</label>
+    <input type="text" id="nombre" [(ngModel)]="nombre" name="nombre" required>
+    <button type="submit">Enviar</button>
+  </form>
+
+  <p *ngIf="nombre">¡Hola, {{ nombre }}!</p>
+
+  <div *ngIf="showContent">
+    <h3>Cosas que me gustan:</h3>
+    <div *ngFor="let item of cosasQueMeGustan">
+      <img [src]="item.imagen" alt="{{ item.nombre }}" width="100">
+      <p>{{ item.nombre }}</p>
+    </div>
+
+    <h3>Cosas que no me gustan:</h3>
+    <div *ngFor="let item of cosasQueNoMeGustan">
+      <img [src]="item.imagen" alt="{{ item.nombre }}" width="100">
+      <p>{{ item.nombre }}</p>
+    </div>
+
+    <h3>Enlaces de canciones de Trap:</h3>
+    <ul>
+      <li *ngFor="let cancion of canciones">
+        <a [href]="cancion.url" target="_blank">{{ cancion.nombre }}</a>
+      </li>
+    </ul>
+  </div>
+</div>
